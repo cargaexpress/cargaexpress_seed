@@ -1,0 +1,21 @@
+# Local PostgreSQL for development. Start it with:  docker compose up -d
+services:
+  db:
+    image: postgres:16
+    container_name: cargaexpress-db
+    environment:
+      POSTGRES_USER: cargaexpress
+      POSTGRES_PASSWORD: cargaexpress
+      POSTGRES_DB: cargaexpress
+    ports:
+      - "5432:5432"
+    volumes:
+      - cargaexpress_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cargaexpress -d cargaexpress"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  cargaexpress_pgdata:

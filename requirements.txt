@@ -1,0 +1,4 @@
+sqlalchemy>=2.0
+psycopg[binary]>=3.1
+tzdata
+pytest>=7.4
